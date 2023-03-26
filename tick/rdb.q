@@ -1,4 +1,5 @@
-//need to load in logging script (log.q)
+//load in logging script
+\l log.q
 
 if[not "w"=first string .z.o;system "sleep 1"];
 
