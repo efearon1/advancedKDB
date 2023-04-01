@@ -1,9 +1,10 @@
 / q tick.q sym tpLogFile -p 5001 </dev/null >foo 2>&1 &
 
 /q tick.q SRC [DST] [-p 5010] [-o h]
-system"l tick/",(src:first .z.x,enlist"sym"),".q"
+system"l tick/",(src:first .z.x),".q"
 
-if[not system"p";system"p 6210"]
+//if tp port not set, set to default of 5010
+if[not system"p";system"p 5010"]
 
 \l tick/u.q
 \l tick/log.q
