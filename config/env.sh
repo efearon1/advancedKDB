@@ -12,3 +12,4 @@ export CEP_PORT=6205
 export HDB_PORT=6212
 
 export TP_TIMER=100
+export Q_OS=l64
