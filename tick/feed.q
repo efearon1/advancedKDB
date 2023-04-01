@@ -1,5 +1,5 @@
 //load in logging script
-\l log.q
+\l tick/log.q
 
 //connect to tickerplant
 h:neg hopen `:localhost:5000
