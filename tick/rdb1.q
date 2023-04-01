@@ -1,9 +1,11 @@
+//q tick/r.q localhost:5000 localhost:5002 -p 5001
+
 //load in logging script
 \l tick/log.q
 
 if[not "w"=first string .z.o;system "sleep 1"];
 
-upd:insert;
+upd:{if[x in `trade`quote; x insert y]}
 
 / get the ticker plant and history ports, defaults are 5010,5012
 .u.x:.z.x,(count .z.x)_(":5010";":5012");
