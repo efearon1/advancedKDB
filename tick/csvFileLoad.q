@@ -13,5 +13,4 @@ data:(colTypes;enlist ",") 0: csvFilePath;
 
 h:hopen "J"$getenv[`TP_PORT];
 
-//h(`.u.upd; tableName; flip get each data);
-//h(`.u.upd; tableName; value flip data);
+h(`.u.upd; tableName; value flip data);
