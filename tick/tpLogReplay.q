@@ -13,8 +13,8 @@ h:hopen (newTpLogFile set ());
 //redefine upd
 upd:{[t;d] 
     if[all(tabFilter~t; symFilter in d[1]); 
-    data:(flip d)[where symFilter in/: flip d];
-    h enlist (`upd;t;flip data)];
+        data:(flip d)[where symFilter in/: flip d];
+        h enlist (`upd;t;flip data)];
     };
         
 -11!tpLogFile;  
