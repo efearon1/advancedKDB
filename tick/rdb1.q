@@ -1,21 +1,23 @@
-//q tick/r.q localhost:5000 localhost:5002 -p 5001
+/q tick/r.q -tp {TP_PORT} -hdb {HDB_PORT} -tabs trade quote
 
 //load in logging script
 \l tick/log.q
 
 if[not "w"=first string .z.o;system "sleep 1"];
 
-upd:{if[x in `trade`quote; x insert y]}
+upd:{if[x in `trade`quote; x insert y]};
+
+args:.Q.opt .z.x;
 
 / get the ticker plant and history ports, defaults are 5010,5012
-.u.x:.z.x,(count .z.x)_(":5010";":5012");
+/.u.x:.z.x,(count .z.x)_(":5010";":5012");
 
 / end of day: save, clear, hdb reload
-.u.end:{t:tables`.;t@:where `g=attr each t@\:`sym;.Q.hdpf[`$":",.u.x 1;`:.;x;`sym];@[;`sym;`g#] each t;};
+.u.end:{t:tables`.;t@:where `g=attr each t@\:`sym;.Q.hdpf[`$"::",first args`hdb;`:.;x;`sym];@[;`sym;`g#] each t;};
 
 / init schema and sync up from log file;cd to hdb(so client save can run)
-.u.rep:{(.[;();:;].)each x;if[null first y;:()];-11!y;system "cd ",1_-10_string first reverse y};
+.u.rep:{if[0>type first x;x:enlist x];(.[;();:;].)each x;if[null first y;:()];-11!y;system "cd ",1_-10_string first reverse y};
 / HARDCODE \cd if other than logdir/db
 
 / connect to ticker plant for (schema;(logcount;log))
-.u.rep .(hopen `$":",.u.x 0)"(.u.sub[`;`];`.u `i`L)";
+.u.rep .(hopen `$"::",first args`tp)"(.u.sub[`",("`" sv args`tabs),";`];`.u `i`L)";
