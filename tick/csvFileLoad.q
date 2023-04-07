@@ -9,7 +9,7 @@ args:.Q.opt .z.x;
 tableName:`$first args`tab;
 csvFilePath:hsym `$first args`fileName;
 
-if[tableName in `trade`quote`aggregation; colTypes:$[`trade~tableName;"NSFI";`quote~tableName;"NSFFII";"NSFFFFF"]];
+if[tableName in `trade`quote`aggregation; colTypes:$[`trade~tableName;"NSFI";`quote~tableName;"NSFFII";"NSFFIFF"]];
 if[not tableName in `trade`quote`aggregation; .log.err["Following table not recognised: ",string tableName]];
 
 data:(colTypes;enlist ",") 0: csvFilePath;
