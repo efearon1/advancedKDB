@@ -1,4 +1,4 @@
-/q tick/r.q -tp {TP_PORT} -hdb {HDB_PORT} -tabs trade quote
+/q tick/r.q -p {RDB1_PORT} -tp {TP_PORT} -hdb {HDB_PORT} -tabs trade quote
 
 //load in logging script
 \l tick/log.q
