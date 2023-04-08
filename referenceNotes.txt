@@ -1,0 +1,2 @@
+//using -19! to convert saved data into compressed format (used in eod.q)
+https://code.kx.com/q/wp/compress/#converting-saved-data-to-compressed-format-using-19
