@@ -18,4 +18,4 @@ upd:{[t;d]
 
 .u.rep .(hopen `$"::",first args`tp)"(.u.sub[`",("`" sv args`tabs),";`];`.u `i`L)";
 
-    
+.u.end:{{delete from x}each tables `. };
