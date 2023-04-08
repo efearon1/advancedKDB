@@ -16,7 +16,7 @@ date:"D"$-10#first args`tpLog;
 
 //convert saved data to compressed format using -19!
 compressCols:raze ` sv/:' ((dir,`$string date),/:tables`),/:'(cols each tables`)except\: `time`sym;
-{-19!(x;x;16;2;6)} each compressCols;
+{-19!(x;x;17;2;6)} each compressCols;
 
 
 
