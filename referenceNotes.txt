@@ -1,2 +1,5 @@
 //using -19! to convert saved data into compressed format (used in eod.q)
 https://code.kx.com/q/wp/compress/#converting-saved-data-to-compressed-format-using-19
+
+//finding PID using port number (used in stop.sh)
+https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port
