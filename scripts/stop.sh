@@ -31,7 +31,7 @@ if [ "$all" = "y" ]; then
         echo "RBD1 wasn't running"
     fi
 
-    if [ $RDB2 -eq 1 ]; then
+    if [ $RDB2_ON -eq 1 ]; then
         echo "Shutting down RDB2"
         lsof -i :${RDB2_PORT} | grep LISTEN | awk '{print $2}' | xargs kill -9
     else
