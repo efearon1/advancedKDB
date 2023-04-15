@@ -1,4 +1,4 @@
-//q tick/r.q -p {RDB2_PORT} -tp {TP_PORT} -hdb {HDB_PORT} -tabs aggregation
+//q tick/rdb2.q -p {RDB2_PORT} -tp {TP_PORT} -hdb {HDB_PORT} -tabs aggregation
 
 //load in logging script
 \l tick/log.q
