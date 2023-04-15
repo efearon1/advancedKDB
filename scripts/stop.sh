@@ -1,6 +1,13 @@
 source ~/advancedKDB/config/env.sh
 cd ${KDB_HOME}
 
+TP_PORT=6210
+RDB1_PORT=6201
+RDB2_PORT=6202
+FH_PORT=6204
+CEP_PORT=6205
+HDB_PORT=6212
+
 TICK_ON=$(ps -ef | grep -v grep | grep tick.q | wc -l)
 RDB1_ON=$(ps -ef | grep -v grep | grep rdb1.q | wc -l)
 RDB2_ON=$(ps -ef | grep -v grep | grep rdb2.q | wc -l)
