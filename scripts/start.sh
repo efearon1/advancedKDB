@@ -11,35 +11,56 @@ CEP_START="nohup ~/q/${Q_OS}/q ${TICK_DIR}/cep.q -p ${CEP_PORT} -tp {TP_PORT} -t
 echo "Do you wish to start all processes?, (y/n)"
 read all
 if [ "$all" = "y" ]; then
-        echo "Read all"
+        echo "Starting all processes..."
+        echo "Starting the tickerplant..."
+        eval ${TICK_START}
+        sleep 2
+        echo "Starting rdb1..."
+        eval ${RDB1_START}
+        sleep 2
+        echo "Starting rdb2..."
+        eval ${RDB2_START}
+        sleep 2
+        echo "Starting the feedhandler..."
+        eval ${FEED_START}
+        sleep 2
+        echo "Starting the CEP..."
+        eval ${CEP_START}
 else
     echo "Do you wish to start the tickerplant?, (y/n)"
     read tick
     if [ "$tick" = "y" ]; then
-        echo "read tick"
+        echo "Starting the tickerplant..."
+        eval ${TICK_START}
+        sleep 2
     fi
 
     echo "Do you wish to start rdb1?, (y/n)"
     read rdb1
     if [ "$rdb1" = "y" ]; then
-        echo "read rdb1"
+        echo "Starting rdb1..."
+        eval ${RDB1_START}
     fi
     
     echo "Do you wish to start rdb2?, (y/n)"
     read rdb2
     if [ "$rdb2" = "y" ]; then
-        echo "read rdb2"
+        echo "Starting rdb2..."
+        eval ${RDB2_START}
     fi
     
     echo "Do you wish to start the feedhandler?, (y/n)"
-    read fh
-    if [ "$fh" = "y" ]; then
-        echo "read fh"
+    read feed
+    if [ "$feed" = "y" ]; then
+        echo "Starting the feedhandler..."
+        eval ${FEED_START}
+        sleep 2
     fi
     
     echo "Do you wish to start the CEP?, (y/n)"
     read cep
     if [ "$cep" = "y" ]; then
-        echo "read cep"
+        echo "Starting the CEP..."
+        eval ${CEP_START}
     fi 
 fi
