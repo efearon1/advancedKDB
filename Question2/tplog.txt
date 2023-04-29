@@ -1,0 +1,86 @@
+q)tpLog:get `:tplog
+q)tpLog
+(`upd;`trade;+`sym`price`size!(`A`C`B`C`B;9.025784 4.470818 1.387079 9.409523 0.0283353;37 77 28 26 84))
+(`upd;`trade;+`sym`price`size!(`A`D`A`A`C;5.339515 9.387084 3.027801 4.448492 4.414491;9 74 55 92 14))
+(`upd;`trade;+`sym`price`size!("ACBCD";6.88089 6.377554 0.3845637 8.972357 7.935513;94 19 12 11 1))
+(`upd;`trade;+`sym`price`size!(`C`E`B`D`E;9.082711 9.796094 3.077491 3.652273 9.591177;4 46 99 52 10))
+(`upd;`trade;+`sym`price`size!(`F`F`C`F`D;7.24948 8.112026 2.086614 9.907116 5.794801;36.96114 11.75355 92.34386 40.15936 56.19037))
+(`upd;`trade;+`sym`price`size!(`A`C`E`D`E;6.919292 9.471555 3.40393 9.614594 2.699208;32 82 81 56 81))
+,`upd
+,`trade
+,+`sym`price`size!(`D`B`D`B`C;6.718125 8.639591 8.439807 5.426371 0.7757332;24 61 30 89 14)
+(`upd;`trade;+`sym`price`size!("FDAEB";2.062569 4.81821 2.065625 5.229178 3.338806;56 90 63 28 51))
+
+//indices 6-8 should be one 3-item list
+q)count each tpLog
+3 3 3 3 3 3 1 1 1 3
+
+q)tpLog:8 3#raze tpLog
+q)tpLog
+`upd `trade +`sym`price`size!(`A`C`B`C`B;9.025784 4.470818 1.387079 9.409523 0.0283353;37 77 28 26 84)                            
+`upd `trade +`sym`price`size!(`A`D`A`A`C;5.339515 9.387084 3.027801 4.448492 4.414491;9 74 55 92 14)                              
+`upd `trade +`sym`price`size!("ACBCD";6.88089 6.377554 0.3845637 8.972357 7.935513;94 19 12 11 1)                                 
+`upd `trade +`sym`price`size!(`C`E`B`D`E;9.082711 9.796094 3.077491 3.652273 9.591177;4 46 99 52 10)                              
+`upd `trade +`sym`price`size!(`F`F`C`F`D;7.24948 8.112026 2.086614 9.907116 5.794801;36.96114 11.75355 92.34386 40.15936 56.19037)
+`upd `trade +`sym`price`size!(`A`C`E`D`E;6.919292 9.471555 3.40393 9.614594 2.699208;32 82 81 56 81)                              
+`upd `trade +`sym`price`size!(`D`B`D`B`C;6.718125 8.639591 8.439807 5.426371 0.7757332;24 61 30 89 14)                            
+`upd `trade +`sym`price`size!("FDAEB";2.062569 4.81821 2.065625 5.229178 3.338806;56 90 63 28 51)             
+
+//expecting "sfj"
+q)exec t from meta tpLog[0;2;]
+"sfj"
+q)exec t from meta tpLog[1;2;]
+"sfj"
+q)exec t from meta tpLog[2;2;]
+"cfj"
+q)exec t from meta tpLog[3;2;]
+"sfj"
+q)exec t from meta tpLog[4;2;]
+"sff"
+q)exec t from meta tpLog[5;2;]
+"sfj"
+q)exec t from meta tpLog[6;2;]
+"sfj"
+q)exec t from meta tpLog[7;2;]
+"cfj"
+
+//indices 2 and 7 have `sym column as char instead of symbol
+q)tpLog[2;2]:update `$'sym from tpLog[2;2]
+q)tpLog[7;2]:update `$'sym from tpLog[7;2]
+
+//index 4 has `size column as float instead of long
+tpLog[4;2]:update `long$'size from tpLog[4;2]
+
+q)tpLog
+`upd `trade +`sym`price`size!(`A`C`B`C`B;9.025784 4.470818 1.387079 9.409523 0.0283353;37 77 28 26 84)
+`upd `trade +`sym`price`size!(`A`D`A`A`C;5.339515 9.387084 3.027801 4.448492 4.414491;9 74 55 92 14)  
+`upd `trade +`sym`price`size!(`A`C`B`C`D;6.88089 6.377554 0.3845637 8.972357 7.935513;94 19 12 11 1)  
+`upd `trade +`sym`price`size!(`C`E`B`D`E;9.082711 9.796094 3.077491 3.652273 9.591177;4 46 99 52 10)  
+`upd `trade +`sym`price`size!(`F`F`C`F`D;7.24948 8.112026 2.086614 9.907116 5.794801;37 12 92 40 56)  
+`upd `trade +`sym`price`size!(`A`C`E`D`E;6.919292 9.471555 3.40393 9.614594 2.699208;32 82 81 56 81)  
+`upd `trade +`sym`price`size!(`D`B`D`B`C;6.718125 8.639591 8.439807 5.426371 0.7757332;24 61 30 89 14)
+`upd `trade +`sym`price`size!(`F`D`A`E`B;2.062569 4.81821 2.065625 5.229178 3.338806;56 90 63 28 51)  
+
+//confirm metas are correct
+q)exec t from meta tpLog[0;2]
+"sfj"
+q)"sfj"~exec t from meta tpLog[0;2]
+1b
+q)"sfj"~exec t from meta tpLog[1;2]
+1b
+q)"sfj"~exec t from meta tpLog[2;2]
+1b
+q)"sfj"~exec t from meta tpLog[3;2]
+1b
+q)"sfj"~exec t from meta tpLog[4;2]
+1b
+q)"sfj"~exec t from meta tpLog[5;2]
+1b
+q)"sfj"~exec t from meta tpLog[6;2]
+1b
+q)"sfj"~exec t from meta tpLog[7;2]
+1b
+
+//save new tpLog
+q)`:newTpLog set tpLog
+`:newTpLog
