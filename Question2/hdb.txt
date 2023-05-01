@@ -1,0 +1,13 @@
+Slowness most likely due to backlog of queries being sent to HDB.
+If HDB is busy fulfilling one query, any subsequent queries will be added to queue and dealt with one-by-one.
+
+1. Set up more HDB instances with a gateway acting as a single interface point. Can implement load-balancing logic which will send new queries 
+   to whichever instance is least busy, e.g. the service with the minimum number of outstanding requests in their queue. Can also implement gateway timeout logic,
+   so if a query hasn't returned a result within a predetermined time, it will send 'timeout error to user instead of blocking hdb.
+   
+2. Standardise how users can query data - e.g. set up APIs to ensure any queries sent to HDB are optimal.
+   Before being sent to HDB, the API must fulfill certain prerequisites, for example:
+     --> ensure date range is reasonable and within scope of db
+     --> can have an `outputColumnList flag, so users can specify which columns from table they want returned
+     --> require user to provide either `mdSymbol or `marketId flag
+   The API can then query the HDB in the most efficient way, i.e. date followed by any columns with `g# attribute applied, etc
