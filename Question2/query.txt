@@ -1,0 +1,15 @@
+StringtoDate:{[x]{$[10h~abs type x;x:"D"$x;-14h~ type x;x:x;`date$x]}'[x]} 
+input:raze 500000#enlist("2010.01.01";2010.01.02)
+
+q)StringtoDate
+{[x]{$[10h~abs type x;x:"D"$x;-14h~ type x;x:x;`date$x]}'[x]}
+q)newStringToDate
+{[x]{$[10h~type x;"D"$x;x]}'[x]}
+q)\t StringtoDate input
+243
+q)\t newStringToDate input
+145
+q)a:StringtoDate input
+q)b:newStringToDate input
+q)a~b
+1b
