@@ -1,0 +1,37 @@
+//start TP
+(pykx) efearon_kx_com@advanced-kdb:~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
+KDB+ 4.0 2022.04.15 Copyright (C) 1993-2022 Kx Systems
+l64/ 2(2)core 7978MB efearon_kx_com advanced-kdb 10.154.0.3 EXPIRE 2023.12.07 dcrossey@kx.com KXMS KXCE #79597
+
+"kdb+tick 2.8 2014.03.12"
+q)
+
+//start RDB
+(pykx) efearon_kx_com@advanced-kdb:~/Exercise3/Number2$ q tick/r.q localhost:5000 localhost:5002 -p 5001
+KDB+ 4.0 2022.04.15 Copyright (C) 1993-2022 Kx Systems
+l64/ 2(2)core 7978MB efearon_kx_com advanced-kdb 10.154.0.3 EXPIRE 2023.12.07 dcrossey@kx.com KXMS KXCE #79597
+
+q)tables[]
+`s#`quote`trade
+q)select from trade
+time sym price size
+-------------------
+
+//build feedhander
+(pykx) efearon_kx_com@advanced-kdb:~/Exercise3/Number2/feedhandler$ javac \
+> -sourcepath "src/main/java" \
+> -d "target/classes" \
+> src/main/java/fh/FeedHandler.java
+
+//execute feedhandler
+(pykx) efearon_kx_com@advanced-kdb:~/Exercise3/Number2/feedhandler$ java -cp "target/classes" fh.FeedHandler
+Try to connect to tickerplant
+Connected to tickerplant
+Try to insert record to 'trade' table
+Record inserted to 'trade' table
+
+//check RDB for data
+q)trade
+time                 sym  price  size
+-------------------------------------
+0D15:58:18.640000000 MSFT 174.57 300
