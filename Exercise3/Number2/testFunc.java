@@ -29,9 +29,9 @@ public class FeedHandler {
             }
 
         } catch (FileNotFoundException e) {
-            .e.printStackTrace();
+            throw e;
         } catch (IOException e) {
-            e.printStackTrace();            
+            throw e;            
         } catch (Exception e) {
             throw e;          
         } finally {
