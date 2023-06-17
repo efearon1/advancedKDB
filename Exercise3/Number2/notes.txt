@@ -29,9 +29,15 @@ Try to connect to tickerplant
 Connected to tickerplant
 Try to insert record to 'trade' table
 Record inserted to 'trade' table
+Try to insert record to 'trade' table
+Record inserted to 'trade' table
+Try to insert record to 'trade' table
+Record inserted to 'trade' table
 
 //check RDB for data
 q)trade
-time                 sym  price  size
--------------------------------------
-0D15:58:18.640000000 MSFT 174.57 300
+time                 sym  price size
+------------------------------------
+0D11:02:33.792300000 IBM  9     15  
+0D11:02:57.005863000 AAPL 2     20  
+0D11:03:18.204667000 MSFT 10    5  
