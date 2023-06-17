@@ -1,4 +1,4 @@
-export KDB_HOME=~/advancedKDB
+export KDB_HOME=/home/efearon_kx_com
 export TICK_DIR=${KDB_HOME}/tick
 export LOG_DIR=${KDB_HOME}/logs
 export TP_LOG_DIR=${LOG_DIR}/tpLogs
