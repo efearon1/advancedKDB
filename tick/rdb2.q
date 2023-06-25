@@ -7,7 +7,7 @@ args:.Q.opt .z.x;
 
 if[not "w"=first string .z.o;system "sleep 1"];
 
-upd:{if[x in `aggregation; x insert y]}
+upd:{if[x in `aggregation; x insert y]};
 
 / get the ticker plant and history ports, defaults are 5010,5012
 /.u.x:.z.x,(count .z.x)_(":5010";":5012");
