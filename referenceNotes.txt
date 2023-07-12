@@ -3,3 +3,41 @@ https://code.kx.com/q/wp/compress/#converting-saved-data-to-compressed-format-us
 
 //finding PID using port number (used in stop.sh)
 https://unix.stackexchange.com/questions/106561/finding-the-pid-of-the-process-using-a-specific-port
+
+
+//started tickerplant, rdb1+2, feedhandler and cep as follows:
+
+q tick.q sym logs/tpLogs -p 6210 
+q tick/rdb1.q -p 6201 -tp 6210 -hdb 6212 -tabs trade quote
+q tick/rdb2.q -p 6202 -tp 6210 -hdb 6212 -tabs aggregation
+q tick/feed.q -p 6204
+q tick/cep.q -p 6205 -tp 6210 -tabs trade quote
+
+//all data being populated in tables
+
+//rdb1
+q)count trade
+512
+q)count quote
+4644
+q)3#trade
+time                 sym  price    size
+---------------------------------------
+0D20:41:17.097349000 GS.N 178.5163 798 
+0D20:41:17.097349000 BA.N 128.0462 627 
+0D20:41:18.097377000 BA.N 128.0338 338 
+q)3#quote
+time                 sym    bid      ask      bidSize askSize
+-------------------------------------------------------------
+0D20:41:16.197167000 VOD.L  341.2757 341.3268 858     522    
+0D20:41:16.197167000 MSFT.O 45.14814 45.15241 585     257    
+0D20:41:16.297344000 VOD.L  341.267  341.3161 314     344  
+
+//rdb2
+q)count aggregation
+14295
+q)2#aggregation
+time                 sym  maxTrade minTrade tradedVolume maxBid   minAsk  
+--------------------------------------------------------------------------
+0D20:43:49.111673000 BA.N 128.0462 128.0462 627          128.035  128.0455
+0D20:43:49.111673000 GS.N 178.5163 178.5163 798          178.4996 178.5043
