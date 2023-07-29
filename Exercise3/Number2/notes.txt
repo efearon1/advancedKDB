@@ -1,3 +1,6 @@
+//N.B. filepath of csv file has been hardcoded into FeedHandler.java file
+//String path = "/home/efearon_kx_com/Exercise3/Number2/trade.csv";
+
 //start TP
 (pykx) efearon_kx_com@advanced-kdb:~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
 KDB+ 4.0 2022.04.15 Copyright (C) 1993-2022 Kx Systems
