@@ -89,3 +89,59 @@ time                 sym  maxTrade minTrade tradedVolume maxBid   minAsk
 0D11:11:50.287513000 GS.N 178.5163 178.5163 798          178.4996 178.5043
 q)hclose h
 
+//running scripts
+(pykx) efearon_kx_com@advanced-kdb:~/test$ . ./scripts/test.sh
+Checking which processes are running...
+Tickerplant is down
+RDB1 is down
+RDB2 is down
+Feedhandler is down
+CEP is down
+Check complete
+(pykx) efearon_kx_com@advanced-kdb:~/test$ . ./scripts/start.sh
+Do you wish to start all processes?, (y/n)
+n
+Do you wish to start the tickerplant?, (y/n)
+y
+Starting the tickerplant...
+Do you wish to start rdb1?, (y/n)
+y
+Starting rdb1...
+Do you wish to start rdb2?, (y/n)
+y
+Starting rdb2...
+Do you wish to start the feedhandler?, (y/n)
+y
+Starting the feedhandler...
+Do you wish to start the CEP?, (y/n)
+y
+Starting the CEP...
+(pykx) efearon_kx_com@advanced-kdb:~/test$ . ./scripts/test.sh
+Checking which processes are running...
+Tickerplant is running
+RDB1 is running
+RDB2 is running
+Feedhandler is running
+CEP is running
+Check complete
+
+//connecting to each rdb to confirm data is being populated
+q)h:hopen 6201
+q)h"-2#trade"
+time                 sym   price    size
+----------------------------------------
+0D13:53:48.023440000 VOD.L 341.2437 695 
+0D13:53:48.023440000 VOD.L 341.258  194 
+q)h"-2#quote"
+time                 sym    bid      ask      bidSize askSize
+-------------------------------------------------------------
+0D13:53:52.423430000 MSFT.O 45.14269 45.14986 59      223    
+0D13:53:52.423430000 IBM.N  191.0911 191.114  713     796    
+q)hclose h
+q)h:hopen 6202
+q)h"-2#aggregation"
+time                 sym    maxTrade minTrade tradedVolume maxBid   minAsk  
+----------------------------------------------------------------------------
+0D13:54:06.423954000 MSFT.O 45.18736 45.08799 603039       45.18721 45.08877
+0D13:54:06.423954000 VOD.L  341.8422 341.1277 538929       341.8199 341.1302
+q)hclose h
