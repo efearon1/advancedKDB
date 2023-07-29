@@ -1,6 +1,6 @@
-//q csvFileLoad.q -tab trade -fileName ${CSV_DIR}/trade.csv
-//q csvFileLoad.q -tab quote -fileName ${CSV_DIR}/quote.csv
-//q csvFileLoad.q -tab aggregation -fileName ${CSV_DIR}/aggregation.csv
+//q tick/csvFileLoad.q -tab trade -fileName ${CSV_DIR}/trade.csv
+//q tick/csvFileLoad.q -tab quote -fileName ${CSV_DIR}/quote.csv
+//q tick/csvFileLoad.q -tab aggregation -fileName ${CSV_DIR}/aggregation.csv
 
 \l tick/log.q
 
