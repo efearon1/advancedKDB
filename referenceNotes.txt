@@ -145,3 +145,27 @@ time                 sym    maxTrade minTrade tradedVolume maxBid   minAsk
 0D13:54:06.423954000 MSFT.O 45.18736 45.08799 603039       45.18721 45.08877
 0D13:54:06.423954000 VOD.L  341.8422 341.1277 538929       341.8199 341.1302
 q)hclose h
+
+//N.B. GCP didn't recognise lsof commands, so running stop scripts on Training Machine instead (Training Machine doesn't recognise echo command --> echo command works fine on GCP)
+
+[efearon@dbsql-training advancedKDB]$ . ./scripts/stop.sh
+Do you wish to shut down all processes?, (y/n)
+y
+Shutting down the tickerplant
+[1]   Killed                  nohup q /home/local/FD/efearon/advancedKDB/tick.q sym /home/local/FD/efearon/advancedKDB/logs/tpLogs -p 6210 >> /home/local/FD/efearon/advancedKDB/logs/tick.log 2>&1
+Shutting down RDB1
+[2]   Killed                  nohup q /home/local/FD/efearon/advancedKDB/tick/rdb1.q -p 6201 -tp 6210 -hdb 6212 -tabs trade quote >> /home/local/FD/efearon/advancedKDB/logs/rdb1.log 2>&1
+Shutting down RDB2
+[3]   Killed                  nohup q /home/local/FD/efearon/advancedKDB/tick/rdb2.q -p 6202 -tp 6210 -hdb 6212 -tabs aggregation >> /home/local/FD/efearon/advancedKDB/logs/rdb2.log 2>&1
+Shutting down the feedhandler
+[4]-  Killed                  nohup q /home/local/FD/efearon/advancedKDB/tick/feed.q -p 6204 >> /home/local/FD/efearon/advancedKDB/logs/feed.log 2>&1
+Shutting down the CEP
+[5]+  Killed                  nohup q /home/local/FD/efearon/advancedKDB/tick/cep.q -p 6205 -tp 6210 -tabs trade quote >> /home/local/FD/efearon/advancedKDB/logs/cep.log 2>&1
+[efearon@dbsql-training advancedKDB]$ . ./scripts/test.sh
+-bash: o: command not found
+Tickerplant is down
+RDB1 is down
+RDB2 is down
+Feedhandler is down
+CEP is down
+Check complete
