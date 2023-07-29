@@ -7,4 +7,4 @@
 
 .z.po:{.log.out[(raze "Connection opened: ",string .z.w,"; USER: ",string .z.u),"; Memory stats: ",.Q.s1 .Q.w[]]};
 
-.z.po:{.log.out[(raze "Connection closed: ",string .z.w,"; USER: ",string .z.u),"; Memory stats: ",.Q.s1 .Q.w[]]};
+.z.pc:{.log.out[(raze "Connection closed: ",string .z.w,"; USER: ",string .z.u),"; Memory stats: ",.Q.s1 .Q.w[]]};
