@@ -1,4 +1,4 @@
-//q eod.q -tpLog ${TP_LOG_DIR}/sym2023.01.01 -hdbDir ${KDB_HOME}/hdb
+//q tick/eod.q -tpLog ${TP_LOG_DIR}/sym2023.01.01 -hdbDir ${KDB_HOME}/hdb
 
 system"l ",getenv[`TICK_DIR],"/sym.q";
 
