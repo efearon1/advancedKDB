@@ -41,3 +41,51 @@ time                 sym  maxTrade minTrade tradedVolume maxBid   minAsk
 --------------------------------------------------------------------------
 0D20:43:49.111673000 BA.N 128.0462 128.0462 627          128.035  128.0455
 0D20:43:49.111673000 GS.N 178.5163 178.5163 798          178.4996 178.5043
+
+
+
+//started all processes as follows
+q tick.q sym logs/tpLogs -p 6210 >> logs/tick.log 2>&1 &
+q tick/rdb1.q -p 6201 -tp 6210 -hdb 6212 -tabs trade quote >> logs/rdb1.log 2>&1 &
+q tick/rdb2.q -p 6202 -tp 6210 -hdb 6212 -tabs aggregation >> logs/rdb2.log 2>&1 &
+q tick/feed.q -p 6204 >> logs/feed.log 2>&1 &
+q tick/cep.q -p 6205 -tp 6210 -tabs trade quote >> logs/cep.log 2>&1 &
+
+//opened q session and connected to rdbs to confirm data was being populated
+
+KDB+ 4.0 2022.04.15 Copyright (C) 1993-2022 Kx Systems
+l64/ 2(2)core 7978MB efearon_kx_com advanced-kdb 10.154.0.3 EXPIRE 2023.12.07 dcrossey@kx.com KXMS KXCE #79597
+
+//rdb1
+q)h:hopen 6201
+q)h"tables[]"
+`quote`trade
+q)h"count quote"
+1620
+q)h"count trade"
+188
+q)h"2#trade"
+time                 sym  price    size
+---------------------------------------
+0D11:10:55.687669000 GS.N 178.5163 798 
+0D11:10:55.687669000 BA.N 128.0462 627 
+q)h"2#quote"
+time                 sym    bid      ask      bidSize askSize
+-------------------------------------------------------------
+0D11:10:54.787478000 VOD.L  341.2757 341.3268 858     522    
+0D11:10:54.787478000 MSFT.O 45.14814 45.15241 585     257 
+q)hclose h
+
+//rdb2
+q)h:hopen 6202
+q)h"tables[]"
+,`aggregation
+q)h"count aggregation"
+13575
+q)h"2#aggregation"
+time                 sym  maxTrade minTrade tradedVolume maxBid   minAsk  
+--------------------------------------------------------------------------
+0D11:11:50.287513000 BA.N 128.0462 128.0462 627          128.035  128.0455
+0D11:11:50.287513000 GS.N 178.5163 178.5163 798          178.4996 178.5043
+q)hclose h
+
