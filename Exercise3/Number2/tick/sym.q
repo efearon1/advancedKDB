@@ -1,1 +1,1 @@
-trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$())
+trade:([]time:`timespan$();sym:`symbol$();price:`float$();size:`int$());
