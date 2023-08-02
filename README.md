@@ -43,4 +43,17 @@ $ . ./scripts/test.sh
 ```bash
 $ . ./scripts/stop.sh
 ```
-
+### Number 7 - Tickerplant log replay
+```bash
+$ q tpLogReplay.q -tpLogFile /path/to/tpLog -tabFilter trade -symFilter IBM.N
+```
+### Number 8 - CSV File Load
+```bash
+$ q tick/csvFileLoad.q -tab trade -fileName ${CSV_DIR}/trade.csv
+$ q tick/csvFileLoad.q -tab quote -fileName ${CSV_DIR}/quote.csv
+$ q tick/csvFileLoad.q -tab aggregation -fileName ${CSV_DIR}/aggregation.csv
+```
+### Number 9 - EOD Process
+```bash
+$ q tick/eod.q -tpLog ${TP_LOG_DIR}/sym2023.01.01 -hdbDir ${KDB_HOME}/hdb
+```
