@@ -81,3 +81,53 @@ RDB2 is down
 Feedhandler is down
 CEP is down
 Check complete
+
+
+//Partitioned database
+
+(base) efearon_kx_com@advanced-kdb:~/test/hdb$ ls
+2023.07.29  sym
+(base) efearon_kx_com@advanced-kdb:~/test/hdb$ q
+KDB+ 4.0 2022.04.15 Copyright (C) 1993-2022 Kx Systems
+l64/ 2(2)core 7978MB efearon_kx_com advanced-kdb 10.154.0.3 EXPIRE 2023.12.07 dcrossey@kx.com KXMS KXCE #79597
+
+q)load `:sym
+`sym
+q)load `:2023.07.29/aggregation
+`aggregation
+q)load `:2023.07.29/trade
+`trade
+q)load `:2023.07.29/quote
+`quote
+q)count aggregation
+324505
+q)count trade
+4677
+q)count quote
+42080
+q)meta aggregation
+c           | t f a
+------------| -----
+sym         | s   p
+time        | n    
+maxTrade    | f    
+minTrade    | f    
+tradedVolume| i    
+maxBid      | f    
+minAsk      | f    
+q)meta trade
+c    | t f a
+-----| -----
+sym  | s   p
+time | n    
+price| f    
+size | i    
+q)meta quote
+c      | t f a
+-------| -----
+sym    | s   p
+time   | n    
+bid    | f    
+ask    | f    
+bidSize| i    
+askSize| i 
