@@ -1,14 +1,14 @@
 # advancedKDB
 
 Configuration file `env.sh` located in `advancedKDB/config` directory.
-Adjust accorindgly, then set the environment 
+Adjust accorindgly, then set the environment:
 ```bash
 $ ./config/env.sh
 ```
 
 ## Exercise 1 
 ### Number 1-5
-Each of the processes can be started from advancedKDB directory as such:
+Each of the processes can be started from the `advancedKDB` directory as such:
 #### Tickerplant
 ```bash
 $ nohup q ${KDB_HOME}/tick.q sym ${TP_LOG_DIR} -p ${TP_PORT} >> ${LOG_DIR}/tick.log 2>&1 &
@@ -28,5 +28,19 @@ $ nohup q ${TICK_DIR}/feed.q -p ${FH_PORT} >> ${LOG_DIR}/feed.log 2>&1 &
 #### CEP
 ```bash
 $ nohup q ${TICK_DIR}/cep.q -p ${CEP_PORT} -tp ${TP_PORT} -tabs trade quote >> ${LOG_DIR}/cep.log 2>&1 &
+```
+### Number 6
+The scripts can be found in `advancedKDB/scripts` directory. Each script can be executed from `advancedKDB` directory as follows:
+#### Start
+```bash
+$ . ./scripts/start.sh
+```
+#### Test
+```bash
+$ . ./scripts/test.sh
+```
+#### Stop
+```bash
+$ . ./scripts/stop.sh
 ```
 
