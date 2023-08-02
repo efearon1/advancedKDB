@@ -8,6 +8,13 @@ $ ./config/env.sh
 
 ## Exercise 1 
 ### Number 1-5
-Each of the processes can be started as such:
+Each of the processes can be started from advancedKDB directory as such:
 #### Tickerplant
+```bash
+$ nohup q ${KDB_HOME}/tick.q sym ${TP_LOG_DIR} -p ${TP_PORT} >> ${LOG_DIR}/tick.log 2>&1 &
+```
+### RDB1
+```bash
+$ nohup q ${TICK_DIR}/rdb1.q -p ${RDB1_PORT} -tp ${TP_PORT} -hdb ${HDB_PORT} -tabs trade quote >> ${LOG_DIR}/rdb1.log 2>&1 &
+```
 
