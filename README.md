@@ -65,12 +65,25 @@ All solutions can be found under `advancedKDB/Exercise2` directory.
 ### Number 1 - Python
 ### Number 2 - Java
 Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
-* 1. Start tickerplant
-     ```bash
-     ~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
-     ```
-  3. Start RDB
-  4. Build feedhandler
-  5. Execute feedhandler
+1. Start tickerplant
+   ```bash
+   ~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
+   ```
+2. Start RDB
+   ```bash
+   ~/Exercise3/Number2$ q tick/r.q localhost:5000 localhost:5002 -p 5001
+   ```
+3. Build feedhandler
+   ```java
+   ~/Exercise3/Number2/feedhandler$ javac \
+   > -sourcepath "src/main/java" \
+   > -d "target/classes" \
+   > src/main/java/fh/FeedHandler.java
+   ```
+4. Execute feedhandler
+   ```bash
+   ~/Exercise3/Number2/feedhandler$ java -cp "target/classes" fh.FeedHandler
+   ```
+
 ### Number 3 - Websocket
 
