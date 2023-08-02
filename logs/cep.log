@@ -1,0 +1,11 @@
+2023.07.29D11:56:28.637867000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!3587616 67108864 67108864 0 0 836575..
+nohup: ignoring input
+2023.07.29D13:33:31.054125000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!3915488 67108864 67108864 0 0 836576..
+nohup: ignoring input
+'2023.07.29T13:34:37.449 6205. OS reports: Address already in use
+nohup: ignoring input
+2023.07.29D13:48:36.441660000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!3915488 67108864 67108864 0 0 836576..
+2023.07.29D15:25:15.811718000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!13246144 67108864 67108864 0 0 83657..
+2023.07.29D15:25:15.811791000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!13246112 67108864 67108864 0 0 83657..
+nohup: ignoring input
+2023.08.02D20:49:03.589820000 ***[INFO]*** Connection closed: 0; USER: efearon_kx_com; Memory stats: `used`heap`peak`wmax`mmap`mphy`syms`symw!371840 67108864 67108864 0 0 8365760..
