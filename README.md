@@ -30,7 +30,8 @@ $ nohup q ${TICK_DIR}/feed.q -p ${FH_PORT} >> ${LOG_DIR}/feed.log 2>&1 &
 $ nohup q ${TICK_DIR}/cep.q -p ${CEP_PORT} -tp ${TP_PORT} -tabs trade quote >> ${LOG_DIR}/cep.log 2>&1 &
 ```
 ### Number 6
-The scripts can be found in `advancedKDB/scripts` directory. Proof of testing can be found in `advancedKDB/tick/proofOfTesting.txt` file.
+The scripts can be found in the `advancedKDB/scripts` directory. 
+Proof of testing can be found in `advancedKDB/tick/proofOfTesting.txt` file.
 Each script can be executed from `advancedKDB` directory as follows:
 #### Start
 ```bash
