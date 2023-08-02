@@ -66,7 +66,8 @@ All solutions can be found under `advancedKDB/Exercise2` directory.
 ## Exercise 3
 ### Number 1 - Python
 ### Number 2 - Java
-Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
+Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.  
+Change port numbers if needed.
 1. Start tickerplant
    ```bash
    ~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
