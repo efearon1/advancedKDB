@@ -57,3 +57,20 @@ $ q tick/csvFileLoad.q -tab aggregation -fileName ${CSV_DIR}/aggregation.csv
 ```bash
 $ q tick/eod.q -tpLog ${TP_LOG_DIR}/sym2023.01.01 -hdbDir ${KDB_HOME}/hdb
 ```
+
+## Exercise 2
+All solutions can be found under `advancedKDB/Exercise2` directory.
+
+## Exercise 3
+### Number 1 - Python
+### Number 2 - Java
+Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
+* 1. Start tickerplant
+     ```bash
+     ~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
+     ```
+  3. Start RDB
+  4. Build feedhandler
+  5. Execute feedhandler
+### Number 3 - Websocket
+
