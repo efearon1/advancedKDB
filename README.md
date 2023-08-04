@@ -90,3 +90,9 @@ Change port numbers if needed.
 
 ### Number 3 - Websocket
 
+![advancedKDB1](https://github.com/efearon1/advancedKDB/assets/125225643/ce4acea4-a2b3-494b-ba4c-e16f23e29537)
+
+
+
+
+
