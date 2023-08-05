@@ -1,6 +1,6 @@
 /* q fh.q */
 h:neg hopen `:localhost:5001; /* connect to rdb */
-syms:`MSFT.O`IBM.N`GS.N`BA.N`VOD.L; /* stocks */
+syms:`MSFT.O`IBM.N`GP.N`BL.N`AAP.L; /* stocks */
 prices:syms!45.15 191.10 178.50 128.04 341.30 ; /* starting prices */
 n:2; /* number of rows per update */
 flag:1; /* generate 10% of updates for trade and 90% for quote */
