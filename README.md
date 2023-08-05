@@ -89,9 +89,14 @@ Change port numbers if needed.
    ```
 
 ### Number 3 - Websocket
-Use the tick boxes to filter on specific symbols:
+1. Start pubsub.q
+2. Start fh.q
+3. Open HTML file in web browser. It will look like this:
+![advancedKDB_1](https://github.com/efearon1/advancedKDB/assets/125225643/b8699176-cc50-4d44-ba2f-d272edd3d58a)
 
-![advancedKDB1](https://github.com/efearon1/advancedKDB/assets/125225643/ce4acea4-a2b3-494b-ba4c-e16f23e29537)
+You can then use the selection boxes to filter on any symbol:
+![advancedKDB_2](https://github.com/efearon1/advancedKDB/assets/125225643/85cfc6ba-aa68-4800-b8a4-0db3b7c6df01)
+
 
 
 
