@@ -59,6 +59,12 @@ $ q tick/csvFileLoad.q -tab aggregation -fileName ${CSV_DIR}/aggregation.csv
 ```bash
 $ q tick/eod.q -tpLog ${TP_LOG_DIR}/sym2023.01.01 -hdbDir ${KDB_HOME}/hdb
 ```
+### Number 10 - Schema Change
+Older partitions wouldn't have the new column.
+
+Update sym.q schema file with new column, restart tickerplant and RDB to pick up changes.
+For HDB, use addCol function of dbmaint.q script. 
+Ensures new column name is valid (and not a reserved word), fills column with chosen default value and updates .d file across all partitions.
 
 ## Exercise 2
 All solutions can be found under `advancedKDB/Exercise2` directory.
