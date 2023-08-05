@@ -90,7 +90,13 @@ Change port numbers if needed.
 
 ### Number 3 - Websocket
 1. Start pubsub.q
-2. Start fh.q
+```bash
+$ q Exercise3/Number3/pubsub.q -p 6215
+```
+2. Start fh.q (Note - if you use a different port for the previous step, you will need to adjust the WS_PORT variable within the config/env.sh file)
+```bash
+$ q Exercise3/Number3/fh.q
+```
 3. Open HTML file in web browser.
 It will look like this:
 ![advancedKDB_1](https://github.com/efearon1/advancedKDB/assets/125225643/b8699176-cc50-4d44-ba2f-d272edd3d58a)
