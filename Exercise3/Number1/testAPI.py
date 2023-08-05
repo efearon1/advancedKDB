@@ -14,6 +14,9 @@ from qpython.qtype import QException, QTIME_LIST, QSYMBOL_LIST, QFLOAT_LIST
 def info(x):
     print ("[INFO] {}".format(x))
 
+def error(x):
+    print ("[ERROR] {}".format(x))
+
 def kdbConnect():
     info ('Retrieving TP port for Python API')
     try:
