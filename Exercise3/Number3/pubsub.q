@@ -1,4 +1,4 @@
-\p 5001
+// \p 5001
 .z.ws:{value x};
 .z.wc: {delete from `subs where handle=x};
 
