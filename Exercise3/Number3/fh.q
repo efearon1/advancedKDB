@@ -1,5 +1,6 @@
 /* q fh.q */
-h:neg hopen `:localhost:5001; /* connect to rdb */
+// h:neg hopen `:localhost:5001; /* connect to rdb */
+h:neg hopen `$":localhost:",getenv[`WS_PORT];
 syms:`MSFT.O`IBM.N`GP.N`BL.N`AAP.L; /* stocks */
 prices:syms!45.15 191.10 178.50 128.04 341.30 ; /* starting prices */
 n:2; /* number of rows per update */
