@@ -71,6 +71,7 @@ All solutions can be found under `advancedKDB/Exercise2` directory.
 
 ## Exercise 3
 ### Number 1 - Python
+Details can be found within `advancedKDB/Exercise3/Number1/proofOfTesting.txt` file.  
 Please note - the csv filepath has been hardcoded into the `csvAPI.py` file (line 30). Update if required.
 1. cd to `Exercise3/Number1` directory
 2. Start tickerplant (note - if you use different port number, you will need to update `PY_TP_PORT` variable in env.sh file.
@@ -86,8 +87,8 @@ Please note - the csv filepath has been hardcoded into the `csvAPI.py` file (lin
 ~/Exercise3/Number1$ python csvAPI.py
 ```
 ### Number 2 - Java
-Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
-Please note - the CSV filepath has been hardcoded into the `FeedHandler.java` file (line 12). Please update accordingly.
+Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.  
+Please note - the CSV filepath has been hardcoded into the `FeedHandler.java` file (line 12). Please update accordingly.  
 Change port numbers if needed.
 1. cd to `Exercise3/Number2` directory
 2. Start tickerplant
