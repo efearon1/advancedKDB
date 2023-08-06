@@ -122,9 +122,10 @@ $ q Exercise3/Number3/fh.q
 ```
 3. Open HTML file in web browser.
 It will look like this:
-![advancedKDB_1](https://github.com/efearon1/advancedKDB/assets/125225643/b8699176-cc50-4d44-ba2f-d272edd3d58a)
+![advancedKDB_1](https://github.com/efearon1/advancedKDB/assets/125225643/9d565b49-038d-4b57-a6cd-be7dd6141526)
 You can then use the selection boxes to filter on any symbol:
-![advancedKDB_2](https://github.com/efearon1/advancedKDB/assets/125225643/85cfc6ba-aa68-4800-b8a4-0db3b7c6df01)
+![advancedKDB_2](https://github.com/efearon1/advancedKDB/assets/125225643/31e7cec8-3582-4c8a-b895-e6f1d73a82b9)
+
 
 
 
