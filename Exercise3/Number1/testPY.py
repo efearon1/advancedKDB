@@ -21,25 +21,6 @@ def info(x):
 def error(x):
     print ("[ERROR] {}".format(x))
 
-# Print out arguments inputted to the script
-def argCapture():
-    global files
-    files = sys.argv[1:]
-    print ('Number of Files inputted:', len(files),'files.')
-    print ('File List:'+ str(files))
-
-# Locate csv file directory
-def csvFind():
-    info ('Retrieving CSV directory env variable...')
-    try:
-        global csvDir
-        csvDir = os.environ['CSV_DIR']
-        print ('Located csv path: '+ csvDir)
-
-    except NameError as error:
-        error ('Unable to find TP env variable. '+ str(error))
-        exit(1)
-
 # Establish connection to the KDB TP
 def kdbConnect():
     info ('Retrieving kdb TP Port env variable...')
@@ -71,10 +52,10 @@ def convertTimeToLong(timeValue):
 # Read in csv file(s) into python dataframe and publish to TP
 def csvReadandPublish(dir,files):
     for i in files:
-        path = dir + '/' + i
+        # path = dir + '/' + i
         info ('Reading in csv file from '+ path)
 
-        with open(path) as csv_file:
+        with open(/home/efearon_kx_com/csv/trade.csv) as csv_file:
             csv_reader = csv.reader(csv_file,delimiter=',')
             row_count = 0
 
@@ -121,7 +102,7 @@ def csvReadandPublish(dir,files):
 
 print ("Starting Python API Script")
 #argCapture()
-csvFind()
+#csvFind()
 print ("CONNECTING TO THE KDB TP PROCESS")
 kdbConnect()
 print ("READING AND PUBLISHING CSV FILES")
