@@ -1,68 +1,36 @@
-import datetime
-import numpy
-import random
-import threading
-import sys
-import time
-
+import os
+import csv
+import numpy as np
 from qpython import qconnection
 from qpython.qcollection import qlist
-from qpython.qtype import QException, QTIME_LIST, QSYMBOL_LIST, QFLOAT_LIST
+from qpython.qtype import QException, QTIME_LIST, QSYMBOL_LIST, QFLOAT_LIST, QLONG_LIST
 
+def info(x):
+    print ("[INFO] {}".format(x))
 
-class PublisherThread(threading.Thread):
+def error(x):
+    print ("[ERROR] {}".format(x))
 
-    def __init__(self, q):
-        super(PublisherThread, self).__init__()
-        self.q = q
-        self._stopper = threading.Event()
+def getTpPort():
+    info ('Retrieving PY_TP_PORT...')
+    try:
+        global tpPort
+        tpPort = os.environ['PY_TP_PORT']
+        print ('Located PY_TP_PORT path: '+ tpPort)
 
-    def stop(self):
-        self._stopper.set()
+    except NameError as error1:
+        error ('Unable to find py_TP_PORT env variable. '+ str(error1))
+        exit(1)
 
-    def stopped(self):
-        return self._stopper.isSet()
+getTpPort()
+tpPort = int(tpPort)
 
-    def run(self):
-        while not self.stopped():
-            print('.')
-            try:
-                # publish data to tick
-                # function: .u.upd
-                # table: ask
-                self.q.sendSync('.u.upd', numpy.string_('ask'), self.get_ask_data())
-
-                time.sleep(1)
-            except QException as e:
-                print(e)
-            except:
-                self.stop()
-
-    def get_ask_data(self):
-        c = random.randint(1, 10)
-
-        today = numpy.datetime64(datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0))
-
-        time = [numpy.timedelta64((numpy.datetime64(datetime.datetime.now()) - today), 'ms') for x in range(c)]
-        instr = ['instr_%d' % random.randint(1, 100) for x in range(c)]
-        src = ['qPython' for x in range(c)]
-        ask = [random.random() * random.randint(1, 100) for x in range(c)]
-
-        data = [qlist(time, qtype=QTIME_LIST), qlist(instr, qtype=QSYMBOL_LIST), qlist(src, qtype=QSYMBOL_LIST), qlist(ask, qtype=QFLOAT_LIST)]
-        print(data)
-        return data
-
-
-if __name__ == '__main__':
-    with qconnection.QConnection(host='localhost', port=17010) as q:
-        print(q)
-        print('IPC version: %s. Is connected: %s' % (q.protocol_version, q.is_connected()))
-        print('Press <ENTER> to close application')
-
-        t = PublisherThread(q)
-        t.start()
-
-        sys.stdin.readline()
-
-        t.stop()
-        t.join()
+with qconnection.QConnection(host='localhost', port=tpPort) as q:
+    info ('Reading CSV file...')
+    with open("/home/efearon_kx_com/csv/trade.csv") as f:
+        reader = csv.reader(f, delimiter=",")
+        for line in enumerate(reader):
+            if (line[1][0] == 'time'):
+                continue
+            q.sendSync(('.u.upd[`trade;(`{sym};{price};{size})]').format(sym=line[1][1],price=float(line[1][2]),size=int(line[1][3])))
+            info ('Publising row to TP...')
