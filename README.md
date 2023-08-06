@@ -71,8 +71,22 @@ All solutions can be found under `advancedKDB/Exercise2` directory.
 
 ## Exercise 3
 ### Number 1 - Python
+Please note - the csv filepath has been hardcoded into the `csvAPI.py` file (line 30). Update if required.
+1. cd to `Exercise3/Number1` directory
+2. Start tickerplant (note - if you use different port number, you will need to update `PY_TP_PORT` variable in env.sh file.
+```bash
+~/Exercise3/Number1$ q tick.q sym -p 6225
+```
+3. Start RDB
+```bash
+(qpython) efearon_kx_com@advanced-kdb:~/Exercise3/Number1$ q tick/r.q localhost:6225 localhost:6228 -p 6226
+```
+4. Run python script
+```bash
+~/Exercise3/Number1$ python csvAPI.py
 ### Number 2 - Java
-Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.  
+Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
+Please note - the CSV filepath has been hardcoded into the `FeedHandler.java` file (line 12). Please update accordingly.
 Change port numbers if needed.
 1. Start tickerplant
    ```bash
