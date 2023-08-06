@@ -1,12 +1,5 @@
 #!/usr/bin/python
 
-# Pre-requisited: python3, pyq installed
-
-# sample commands: 
-# pyq pythonAPI.py trade.csv
-# pyq pythonAPI.py quote.csv
-# pyq pythonAPI.py trade.csv quote.csv
-
 import os
 import sys
 import csv
