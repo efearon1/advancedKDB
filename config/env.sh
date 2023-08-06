@@ -13,6 +13,7 @@ export CEP_PORT=6205
 export HDB_PORT=6212
 
 #Exercise 3 ports
+export PY_TP_PORT=6225
 export WS_PORT=6215
 
 export TP_TIMER=100
