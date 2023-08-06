@@ -79,41 +79,43 @@ Please note - the csv filepath has been hardcoded into the `csvAPI.py` file (lin
 ```
 3. Start RDB
 ```bash
-(qpython) efearon_kx_com@advanced-kdb:~/Exercise3/Number1$ q tick/r.q localhost:6225 localhost:6228 -p 6226
+~/Exercise3/Number1$ q tick/r.q localhost:6225 localhost:6228 -p 6226
 ```
 4. Run python script
 ```bash
 ~/Exercise3/Number1$ python csvAPI.py
+```
 ### Number 2 - Java
 Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.
 Please note - the CSV filepath has been hardcoded into the `FeedHandler.java` file (line 12). Please update accordingly.
 Change port numbers if needed.
-1. Start tickerplant
+1. cd to `Exercise3/Number2` directory
+2. Start tickerplant
    ```bash
    ~/Exercise3/Number2$ q tick.q sym $(pwd)/OnDiskDB -p 5000
    ```
-2. Start RDB
+3. Start RDB
    ```bash
    ~/Exercise3/Number2$ q tick/r.q localhost:5000 localhost:5002 -p 5001
    ```
-3. Build feedhandler
+4. cd into `feedhandler` directory
+5. Build feedhandler
    ```java
    ~/Exercise3/Number2/feedhandler$ javac \
    > -sourcepath "src/main/java" \
    > -d "target/classes" \
    > src/main/java/fh/FeedHandler.java
    ```
-4. Execute feedhandler
+6. Execute feedhandler
    ```bash
    ~/Exercise3/Number2/feedhandler$ java -cp "target/classes" fh.FeedHandler
    ```
-
 ### Number 3 - Websocket
 1. Start pubsub.q
 ```bash
 $ q Exercise3/Number3/pubsub.q -p 6215
 ```
-2. Start fh.q (Note - if you use a different port for the previous step, you will need to adjust the WS_PORT variable within the config/env.sh file)
+2. Start fh.q (Note - if you use a different port for the previous step, you will need to adjust the `WS_PORT` variable within the config/env.sh file)
 ```bash
 $ q Exercise3/Number3/fh.q
 ```
