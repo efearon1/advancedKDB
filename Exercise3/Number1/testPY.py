@@ -43,55 +43,30 @@ def convertTimeToLong(timeValue):
     return ((timeArray.tm_hour * 60 + timeArray.tm_min) * 60 + timeArray.tm_sec) * 10**9
     
 # Read in csv file(s) into python dataframe and publish to TP
-def csvReadandPublish(dir,files):
-    for i in files:
-        # path = dir + '/' + i
-        info ('Reading in csv file from '+ path)
+def csvReadandPublish():
+    with open(/home/efearon_kx_com/csv/trade.csv) as csv_file:
+        csv_reader = csv.reader(csv_file,delimiter=',')
+        row_count = 0
 
-        with open(/home/efearon_kx_com/csv/trade.csv) as csv_file:
-            csv_reader = csv.reader(csv_file,delimiter=',')
-            row_count = 0
-
-            for row in csv_reader:
-                if i == 'trade.csv':
-                    if row_count > 0:
-                        '''
-                        Trade Table types
+        for row in csv_reader:
+            if row_count > 0:
+                '''
+                    Trade Table types
                         
-                        time - timespan (.z.N) --> we will cast this to a long value which will be casted to timespan datatype on kdb
-                        sym - symbol (no casting required) --> python str are automatically casted to kdb sym type
-                        price - float
-                        size - int
-                        '''
-                        row[0] = K.timespan(convertTimeToLong(row[0]))
-                        row[2] = K.float(int(row[2]))
-                        row[3] = K.int(int(row[3]))
+                    time - timespan (.z.N) --> we will cast this to a long value which will be casted to timespan datatype on kdb
+                    sym - symbol (no casting required) --> python str are automatically casted to kdb sym type
+                    price - float
+                    size - int
+                    '''
+                    row[0] = K.timespan(convertTimeToLong(row[0]))
+                    row[2] = K.float(int(row[2]))
+                    row[3] = K.int(int(row[3]))
                         
-                        #Send the converted row values to the TP process through the handle
-                        handle(('.u.upd','trade',(row[0],row[1],row[2],row[3])))
-                    row_count += 1
+                    #Send the converted row values to the TP process through the handle
+                    handle(('.u.upd','trade',(row[0],row[1],row[2],row[3])))
+                row_count += 1
                 
-                elif i == 'quote.csv':
-                    if row_count > 0:
-                        '''
-                        Quote Table types
-                        
-                        time - timespan (.z.N) --> we will cast this to a long value which will be casted to timespan datatype on kdb
-                        sym - symbol (no casting required) --> python str are automatically casted to kdb sym type
-                        bid - float
-                        ask - float
-                        bidSize - int
-                        askSize - int
-                        '''
-                        row[0] = K.timespan(convertTimeToLong(row[0]))
-                        row[2] = K.float(int(row[2]))
-                        row[3] = K.float(int(row[3]))
-                        row[4] = K.int(int(row[4]))
-                        row[5] = K.int(int(row[5]))
 
-                        #Send the converted row values to the TP process through the handle
-                        handle(('.u.upd','quote',(row[0],row[1],row[2],row[3],row[4],row[5])))
-                    row_count += 1
 
 print ("Starting Python API Script")
 #argCapture()
@@ -99,6 +74,6 @@ print ("Starting Python API Script")
 print ("CONNECTING TO THE KDB TP PROCESS")
 kdbConnect()
 print ("READING AND PUBLISHING CSV FILES")
-csvReadandPublish(csvDir,files)
+csvReadandPublish()
 print ("SUCCESS!\nEXITING...")
 exit()
