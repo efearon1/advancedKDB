@@ -88,7 +88,7 @@ Please note - the csv filepath has been hardcoded into the `csvAPI.py` file (lin
 ```
 ### Number 2 - Java
 Details can be found within `advancedKDB/Exercise3/Number2/proofOfTesting.txt` file.  
-Please note - the CSV filepath has been hardcoded into the `FeedHandler.java` file (line 12). Please update accordingly.  
+Please note - the CSV filepath has been hardcoded into the `/Exercise3/Number2/feedhandler/src/main/java/fh/FeedHandler.java` file (line 12). Please update accordingly.  
 Change port numbers if needed.
 1. cd to `Exercise3/Number2` directory
 2. Start tickerplant
