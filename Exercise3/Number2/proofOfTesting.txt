@@ -1,4 +1,4 @@
-//N.B. filepath of csv file has been hardcoded into FeedHandler.java file
+//N.B. filepath of csv file has been hardcoded into FeedHandler.java file (line 12)
 //String path = "/home/efearon_kx_com/Exercise3/Number2/trade.csv";
 
 //start TP
