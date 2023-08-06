@@ -112,11 +112,11 @@ Change port numbers if needed.
    ~/Exercise3/Number2/feedhandler$ java -cp "target/classes" fh.FeedHandler
    ```
 ### Number 3 - Websocket
-1. Start pubsub.q
+1. Start pubsub.q (Note - if you use a different port, you will need to adjust the `WS_PORT` variable within the config/env.sh file)
 ```bash
 $ q Exercise3/Number3/pubsub.q -p 6215
 ```
-2. Start fh.q (Note - if you use a different port for the previous step, you will need to adjust the `WS_PORT` variable within the config/env.sh file)
+2. Start fh.q 
 ```bash
 $ q Exercise3/Number3/fh.q
 ```
