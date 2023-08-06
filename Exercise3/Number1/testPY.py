@@ -21,8 +21,8 @@ def kdbConnect():
         port = os.environ['PY_TP_PORT']
         print ('Tickerplant Port:', port)
 
-    except NameError as error:
-        error ('Unable to find TP env variable. ' + str(error))
+    except NameError as error1:
+        error ('Unable to find TP env variable. ' + str(error1))
         exit(1)
 
     # Establish a connection to the kdb TP process
