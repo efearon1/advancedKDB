@@ -33,3 +33,10 @@ time                 sym  price size
 0D11:02:33.792300000 IBM  9     15  
 0D11:02:57.005863000 AAPL 2     20  
 0D11:03:18.204667000 MSFT 10    5  
+q)meta trade
+c    | t f a
+-----| -----
+time | n    
+sym  | s   g
+price| f    
+size | i 
