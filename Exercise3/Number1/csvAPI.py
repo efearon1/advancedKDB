@@ -27,7 +27,7 @@ tpPort = int(tpPort)
 
 with qconnection.QConnection(host='localhost', port=tpPort) as q:
     info ('Reading CSV file...')
-    with open("/home/efearon_kx_com/csv/trade.csv") as f:
+    with open("./trade.csv") as f:
         reader = csv.reader(f, delimiter=",")
         for line in enumerate(reader):
             if (line[1][0] == 'time'):
