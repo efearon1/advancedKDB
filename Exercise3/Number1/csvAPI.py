@@ -32,5 +32,5 @@ with qconnection.QConnection(host='localhost', port=tpPort) as q:
         for line in enumerate(reader):
             if (line[1][0] == 'time'):
                 continue
-            q.sendSync(('.u.upd[`trade;(`{sym};{price};{size})]').format(sym=line[1][1],price=float(line[1][2]),size=int(line[1][3])))
+            q.sendSync(('.u.upd[`trade;({time};`{sym};{price};{size})]').format(time=line[1][0],sym=line[1][1],price=float(line[1][2]),size=int(line[1][3])))
             info ('Publising row to TP...')
